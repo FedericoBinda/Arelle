@@ -5,6 +5,11 @@
 # tags from Docker Hub.
 FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
 
+# Running as root. In principle this should be avoided,
+# but I will test first if things work this way
+# and think later of a better solution for the actual deployment
+RUN mkdir /root/.config && mkdir /root/.config/arelle
+
 # Install dev tools required for libxml
 RUN apk update && apk add libxml2-dev libxslt-dev python-dev build-base
 
